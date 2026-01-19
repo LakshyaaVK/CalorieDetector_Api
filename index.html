@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,15 +11,18 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+
         .gradient-bg {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
+
         .card {
             background-color: white;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease-in-out;
         }
+
         .upload-area {
             border: 3px dashed #d1d5db;
             border-radius: 15px;
@@ -27,10 +31,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        .upload-area:hover, .upload-area.dragover {
+
+        .upload-area:hover,
+        .upload-area.dragover {
             border-color: #4f46e5;
             background-color: #f0f2ff;
         }
+
         .loader {
             border: 4px solid #f3f3f3;
             border-top: 4px solid #4f46e5;
@@ -39,27 +46,39 @@
             height: 40px;
             animation: spin 1s linear infinite;
         }
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body class="gradient-bg min-h-screen flex items-center justify-center p-4">
     <main class="w-full max-w-2xl mx-auto">
         <div class="card p-8 md:p-12">
-           
+
             <div class="text-center mb-8">
                 <h1 class="text-3xl md:text-4xl font-bold text-gray-800">AI Calorie Detector</h1>
                 <p class="text-gray-500 mt-2">Upload a photo of your meal to get an estimated calorie count.</p>
             </div>
 
-            
+
             <div id="uploadContainer">
                 <div id="uploadArea" class="upload-area">
                     <input type="file" id="imageUpload" class="hidden" accept="image/*">
                     <div class="flex flex-col items-center">
-                        <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
                         <p class="mt-2 text-sm text-gray-600">
                             <span class="font-semibold text-indigo-600">Click to upload</span> or drag and drop
                         </p>
@@ -68,40 +87,48 @@
                 </div>
             </div>
 
-         
+
             <div id="analysisContainer" class="hidden">
                 <div class="relative mb-6">
-                    <img id="imagePreview" src="#" alt="Food preview" class="w-full h-auto max-h-80 object-contain rounded-lg shadow-md">
+                    <img id="imagePreview" src="#" alt="Food preview"
+                        class="w-full h-auto max-h-80 object-contain rounded-lg shadow-md">
                 </div>
 
-             
+
                 <div id="loader" class="flex flex-col items-center justify-center text-center">
                     <div class="loader"></div>
                     <p class="text-gray-600 mt-4">Analyzing your meal... this may take a moment.</p>
                 </div>
 
-             
+
                 <div id="results" class="hidden">
                     <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Nutritional Estimate</h2>
                     <div id="resultsContent"></div>
-                     <div class="mt-6 text-center">
-                        <button id="resetButton" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-indigo-700 transition">Analyze Another Meal</button>
+                    <div class="mt-6 text-center">
+                        <button id="resetButton"
+                            class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-indigo-700 transition">Analyze
+                            Another Meal</button>
                     </div>
                 </div>
             </div>
 
-          
+
             <div id="disclaimer" class="mt-8 text-xs text-gray-400 text-center">
-                <p><span class="font-bold">Disclaimer:</span> This is an AI-powered estimate. Actual calorie counts may vary based on portion sizes, ingredients, and preparation methods. This tool is for informational purposes only and is not a substitute for professional medical or nutritional advice.</p>
+                <p><span class="font-bold">Disclaimer:</span> This is an AI-powered estimate. Actual calorie counts may
+                    vary based on portion sizes, ingredients, and preparation methods. This tool is for informational
+                    purposes only and is not a substitute for professional medical or nutritional advice.</p>
             </div>
-             
-            <div id="errorMessage" class="hidden mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative" role="alert">
+
+            <div id="errorMessage"
+                class="hidden mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative"
+                role="alert">
                 <strong class="font-bold">Oops!</strong>
                 <span class="block sm:inline" id="errorText">Something went wrong. Please try again.</span>
             </div>
         </div>
     </main>
-    
+
+    <script src="config.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const uploadArea = document.getElementById('uploadArea');
@@ -125,7 +152,7 @@
                 }
             });
 
-          
+
             ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
                 uploadArea.addEventListener(eventName, preventDefaults, false);
                 document.body.addEventListener(eventName, preventDefaults, false);
@@ -153,8 +180,8 @@
             }
 
             resetButton.addEventListener('click', () => {
-               
-                imageUpload.value = ''; 
+
+                imageUpload.value = '';
                 uploadContainer.classList.remove('hidden');
                 analysisContainer.classList.add('hidden');
                 results.classList.add('hidden');
@@ -170,7 +197,7 @@
                     return;
                 }
 
-               
+
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     imagePreview.src = e.target.result;
@@ -223,35 +250,45 @@
                     `;
 
                     const userQuery = "Analyze the provided meal image and return the nutritional information in the specified JSON format.";
-                    
-                    // PASTE YOUR GOOGLE AI API KEY HERE
-                    // You can get a free key from Google AI Studio (https://aistudio.google.com/app/apikey)
-                    const apiKey = ""; // <-- PASTE YOUR KEY BETWEEN THE QUOTATION MARKS
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                    // API Key loaded from config.js
+                    const apiKey = CONFIG.GROQ_API_KEY;
+                    const apiUrl = CONFIG.GROQ_API_URL;
 
                     const payload = {
-                        systemInstruction: {
-                            parts: [{ text: systemPrompt }]
-                        },
-                        contents: [{
-                            parts: [
-                                { text: userQuery },
-                                {
-                                    inlineData: {
-                                        mimeType: file.type,
-                                        data: base64ImageData
+                        model: "meta-llama/llama-4-scout-17b-16e-instruct",
+                        messages: [
+                            {
+                                role: "system",
+                                content: systemPrompt
+                            },
+                            {
+                                role: "user",
+                                content: [
+                                    {
+                                        type: "text",
+                                        text: userQuery
+                                    },
+                                    {
+                                        type: "image_url",
+                                        image_url: {
+                                            url: `data:${file.type};base64,${base64ImageData}`
+                                        }
                                     }
-                                }
-                            ]
-                        }],
-                        generationConfig: {
-                           responseMimeType: "application/json",
-                        }
+                                ]
+                            }
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 1024,
+                        response_format: { type: "json_object" }
                     };
 
                     const response = await fetch(apiUrl, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${apiKey}`
+                        },
                         body: JSON.stringify(payload)
                     });
 
@@ -262,9 +299,9 @@
 
                     const result = await response.json();
 
-                    const candidate = result.candidates?.[0];
-                    if (candidate && candidate.content?.parts?.[0]?.text) {
-                        const jsonText = candidate.content.parts[0].text;
+                    const choice = result.choices?.[0];
+                    if (choice && choice.message?.content) {
+                        const jsonText = choice.message.content;
                         const data = JSON.parse(jsonText);
                         displayResults(data);
                     } else {
@@ -273,7 +310,8 @@
 
                 } catch (error) {
                     console.error("Error analyzing image:", error);
-                    showError("Failed to analyze the image. The AI may not have recognized the food, or there was a network issue. Please try a different image.");
+                    console.error("Error details:", error.message);
+                    showError(`Failed to analyze the image. Error: ${error.message}`);
                 } finally {
                     loader.classList.add('hidden');
                     disclaimer.classList.remove('hidden');
@@ -282,12 +320,12 @@
 
             function displayResults(data) {
                 if (!data || !data.items || !data.totalCalories) {
-                     showError("Could not parse the analysis data. Please try again.");
-                     return;
+                    showError("Could not parse the analysis data. Please try again.");
+                    return;
                 }
-                resultsContent.innerHTML = ''; 
+                resultsContent.innerHTML = '';
 
-                
+
                 const totalCaloriesDiv = document.createElement('div');
                 totalCaloriesDiv.className = 'text-center bg-indigo-50 p-6 rounded-xl mb-6';
                 totalCaloriesDiv.innerHTML = `
@@ -296,7 +334,7 @@
                 `;
                 resultsContent.appendChild(totalCaloriesDiv);
 
-                
+
                 const table = document.createElement('table');
                 table.className = 'w-full text-left table-auto';
                 table.innerHTML = `
@@ -330,11 +368,11 @@
                 errorText.textContent = message;
                 errorMessage.classList.remove('hidden');
                 loader.classList.add('hidden');
-                analysisContainer.classList.remove('hidden'); 
+                analysisContainer.classList.remove('hidden');
                 results.classList.add('hidden');
             }
         });
     </script>
 </body>
-</html>
 
+</html>

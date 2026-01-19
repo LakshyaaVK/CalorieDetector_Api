@@ -1,12 +1,24 @@
 # CalorieDetector_GeminiApi
-This is a simple, single-page web application that uses the Google Gemini API to estimate the calorie content of a meal from an uploaded image.
+This is a simple, single-page web application that uses AI (Groq API with LLaMA 4) to estimate the calorie content of a meal from an uploaded image.
 
-Want to Run Locally?
-upload both index.html and package.json under the same folder
-in terminal : npm install
-              npm run dev
-              or
-              npx vite
+## Setup
+
+1. Clone the repository
+2. Copy `config.example.js` to `config.js` and add your Groq API key:
+   ```bash
+   cp config.example.js config.js
+   ```
+3. Get a FREE Groq API key from https://console.groq.com
+4. Edit `config.js` and replace `your_api_key_here` with your actual key
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
+# or
+npx vite
+```
 
 Live Demo -->   https://lvk-calorie-ai.netlify.app/
 
