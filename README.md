@@ -20,7 +20,7 @@ npm run dev
 npx vite
 ```
 
-Live Demo -->   https://lvk-calorie-ai.netlify.app/
+Live Demo -->   https://dazzling-babka-1b45f3.netlify.app/
 
 Image Upload: Users can click to upload or drag-and-drop a food photo.
 
